@@ -53,22 +53,16 @@ public class Frame1 {
 		JButton btnsubmit = new JButton("Submit");
 		btnsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					Class.forName("com.mysql.jdbc.Driver`");
-					Connection con=DriverManager.getConnection("jdbc:mysql:localhost:3306/test","root","");
-					Statement stmt=con.createStatement();
-					String sql="Select " from table where Pensionerid='"+textpensioner.getText()"';
-					ResultSet rs=stmt.executeQuery(sql);
-					if(rs.next())
-					{
-						JOptionPane.showMessageDialog(null, "Login Succesfull");
-					}
-					else
-			       {
-					JOptionPane.showMessageDialog(null, "Invalid Login Detail", "Login Error",JOptionPane.ERROR_MESSAGE );
-					textpensioner.setText(null);
-				    }
-				} catch (Exception e) {System.out.print(e);}
+				String Pensionerid=textpensioner.getText();
+				if(Pensionerid.contains("123456")
+				{
+				textpensioner.setText(null);
+				}
+				else
+				{
+				JOptionPane.showMessageDialog(null, "invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
+				textpensioner.setText(null);
+				}
 			}
 		});
 		btnsubmit.setBounds(309, 207, 114, 25);
