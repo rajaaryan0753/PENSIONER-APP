@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
-import java.sql.*
+
 public class Frame1 {
 
 	private JFrame frame;
