@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
-import java.sql.*
+
 public class Frame1 {
 
 	private JFrame frame;
@@ -64,7 +64,7 @@ public class Frame1 {
 				textpensioner.setText(null);
 				}
 			}
-		});
+		};
 		btnsubmit.setBounds(309, 207, 114, 25);
 		frame.getContentPane().add(btnsubmit);
 		
