@@ -1,17 +1,18 @@
 package javatestgui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.sql.*;
-
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
+import javax.swing.ImageIcon;
 
 public class Frame1 {
 
@@ -51,24 +52,30 @@ public class Frame1 {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnsubmit = new JButton("Submit");
+		/* CONNECTION CODE
 		btnsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				public class fetchdata {
-	
-	  public static String connectionString = "jdbc:sap://<connection string>";
-		public static String user = "<user name>";
-		public static String password = "<password>";
 
-		public static void main(String[] argv) {
-			Connection connection = null;
-			try {
+				//public class fetchdata { (ERROR : Not required to create a separate class I think)
+	
+				public static String connectionString = "jdbc:sap://<connection string>";
+				public static String user = "<user name>";
+				public static String password = "<password>";
+		
+				
+				
+				if (Connection connection = null) {
+				try {
 				connection = DriverManager.getConnection(connectionString, user, password);
-			} catch (SQLException e) {
+				} catch (SQLException e) {
 				System.err.println("Connection Failed. User/Passwd Error? Message: " + e.getMessage());
 				return;
-			}
-			if (connection != null) {
+					}
+				}
+				if (connection != null) {
 				try {
+
+
 					System.out.println("Connection to HANA successful!");
 					Statement stmt = connection.createStatement();
 					String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
@@ -85,13 +92,14 @@ public class Frame1 {
 					connection.close();
 				} catch (SQLException e) {
 					System.err.println("Query failed!");
-				}
-			}
-		}
 
-}
-			}
-		});
+					}
+				}
+		}
+});*/
+
+
+
 		btnsubmit.setBounds(309, 207, 114, 25);
 		frame.getContentPane().add(btnsubmit);
 		
@@ -105,15 +113,17 @@ public class Frame1 {
 		frame.getContentPane().add(btnreset);
 		
 		JLabel lblpensioner = new JLabel("PENSIONER LOGIN PAGE");
-		lblpensioner.setBounds(171, 12, 189, 15);
+		lblpensioner.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		lblpensioner.setBounds(126, 76, 189, 15);
 		frame.getContentPane().add(lblpensioner);
 		
-		JLabel lblPensionerId = new JLabel("PENSIONER ID");
-		lblPensionerId.setBounds(24, 78, 142, 34);
+		JLabel lblPensionerId = new JLabel("Pensioner ID: ");
+		lblPensionerId.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPensionerId.setBounds(87, 131, 102, 25);
 		frame.getContentPane().add(lblPensionerId);
 		
 		textpensioner = new JTextField();
-		textpensioner.setBounds(217, 86, 124, 19);
+		textpensioner.setBounds(191, 133, 141, 22);
 		frame.getContentPane().add(textpensioner);
 		textpensioner.setColumns(10);
 		
@@ -122,7 +132,16 @@ public class Frame1 {
 		frame.getContentPane().add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(24, 56, 399, 2);
+		separator_1.setBounds(24, 104, 399, 2);
 		frame.getContentPane().add(separator_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 434, 63);
+		frame.getContentPane().add(panel);
+		ImageIcon image = new ImageIcon("MPT.jpg");
+		JLabel label = new JLabel(image);
+		panel.add(label);
+		
+	
 	}
 }
