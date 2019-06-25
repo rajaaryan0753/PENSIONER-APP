@@ -55,13 +55,14 @@ public class Frame1 {
 		/* CONNECTION CODE
 		btnsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 				//public class fetchdata { (ERROR : Not required to create a separate class I think)
 	
 				public static String connectionString = "jdbc:sap://<connection string>";
 				public static String user = "<user name>";
 				public static String password = "<password>";
 		
-				//public static void main(String[] argv) { (ERROR: 2 main functions in the file)
+				
 				
 				if (Connection connection = null) {
 				try {
@@ -73,6 +74,8 @@ public class Frame1 {
 				}
 				if (connection != null) {
 				try {
+
+
 					System.out.println("Connection to HANA successful!");
 					Statement stmt = connection.createStatement();
 					String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
@@ -89,10 +92,14 @@ public class Frame1 {
 					connection.close();
 				} catch (SQLException e) {
 					System.err.println("Query failed!");
+
 					}
 				}
 		}
 });*/
+
+
+
 		btnsubmit.setBounds(309, 207, 114, 25);
 		frame.getContentPane().add(btnsubmit);
 		
