@@ -52,7 +52,7 @@ public class Frame1 {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnsubmit = new JButton("Submit");
-		/* CONNECTION CODE
+		
 		btnsubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -78,6 +78,11 @@ public class Frame1 {
 
 					System.out.println("Connection to HANA successful!");
 					Statement stmt = connection.createStatement();
+					String Pensionerid=textpensioner.getText();
+				if(Pensionerid.contains("123456")
+				{
+				
+
 					String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
 					ResultSet rs = stmt.executeQuery(sqlfetch);
 					String id = rs.getString("idno");
@@ -87,7 +92,13 @@ public class Frame1 {
 					String address = rs.getString("address");
 					String phoneno = rs.getString("phoneno");
 					String retdate = rs.getString("retdate");
-					rs.close();
+				}
+				   else
+				{
+				JOptionPane.showMessageDialog(null, "invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
+				textpensioner.setText(null);
+				}	 
+				   rs.close();
 					stmt.close();
 					connection.close();
 				} catch (SQLException e) {
@@ -96,7 +107,7 @@ public class Frame1 {
 					}
 				}
 		}
-});*/
+});
 
 
 
