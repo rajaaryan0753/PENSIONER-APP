@@ -112,4 +112,5 @@ public class Frame1 {
 		separator_1.setBounds(24, 56, 399, 2);
 		frame.getContentPane().add(separator_1);
 	}
+}
 
