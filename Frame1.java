@@ -58,11 +58,11 @@ public class Frame1 {
 					Connection con=DriverManager.getConnection("jdbc:mysql:localhost:3306/test","root","");
 					Statement stmt=con.createStatement();
 					String sql="Select " from table where Pensionerid='"+textpensioner.getText()"';
-					
+					ResultSet rs = stmt.executeQuery(sqlfetch);
 					if(rs.next())
 					{
 						String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
-					ResultSet rs = stmt.executeQuery(sqlfetch);
+					
 					String id = rs.getString("idno");
 					String name = rs.getString("name");
 					String designation = rs.getString("des");
