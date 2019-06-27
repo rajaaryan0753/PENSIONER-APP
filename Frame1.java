@@ -64,7 +64,7 @@ public class Frame1 {
 				textpensioner.setText(null);
 				}
 			}
-		};
+		});
 		btnsubmit.setBounds(309, 207, 114, 25);
 		frame.getContentPane().add(btnsubmit);
 		
@@ -98,4 +98,4 @@ public class Frame1 {
 		separator_1.setBounds(24, 56, 399, 2);
 		frame.getContentPane().add(separator_1);
 	}
-}
+
