@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.ImageIcon;
 
-public class frame1 {
+public class Frame1 {
 
 	private JFrame frame;
 	private JTextField textpensioner;
@@ -26,7 +26,7 @@ public class frame1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame1 window = new frame1();
+					Frame1 window = new Frame1();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class frame1 {
 	/**
 	 * Create the application.
 	 */
-	public frame1() {
+	public Frame1() {
 		initialize();
 	}
 
