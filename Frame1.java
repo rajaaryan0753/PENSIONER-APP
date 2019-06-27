@@ -79,7 +79,7 @@ public class Frame1 {
 					System.out.println("Connection to HANA successful!");
 					Statement stmt = connection.createStatement();
 					String Pensionerid=textpensioner.getText();
-				if(Pensionerid.contains("123456")
+				if(Pensionerid.contains("123456"))
 				{
 				
 
