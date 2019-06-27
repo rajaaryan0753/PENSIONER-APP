@@ -58,6 +58,7 @@ public class Frame1 {
 
 				//public class fetchdata { (ERROR : Not required to create a separate class I think)
 	
+
 				String connectionString = "jdbc:sap://<connection string>";
 				String user = "<user name>";
 				String password = "<password>";
@@ -67,12 +68,15 @@ public class Frame1 {
 				
 				
 				Connection connection = null;
+
 				try {
 				connection = DriverManager.getConnection(connectionString, user, password);
 				} catch (SQLException e) {
 				System.err.println("Connection Failed. User/Passwd Error? Message: " + e.getMessage());
 				return;
 					}
+
+
 				if (connection != null) {
 				try {
 
@@ -85,7 +89,9 @@ public class Frame1 {
 				
 
 					String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
+
 					rs = stmt.executeQuery(sqlfetch);
+
 					String id = rs.getString("idno");
 					String name = rs.getString("name");
 					String designation = rs.getString("des");
@@ -99,16 +105,20 @@ public class Frame1 {
 				JOptionPane.showMessageDialog(null, "invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
 				textpensioner.setText(null);
 				}	 
+
 				    rs.close();
+
 					stmt.close();
 					connection.close();
 				} catch (SQLException e) {
 					System.err.println("Query failed!");
 
 					}
+
 				} 
 		} 
 });  
+
 
 
 
