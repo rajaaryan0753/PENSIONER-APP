@@ -58,10 +58,18 @@ public class Frame1 {
 					Connection con=DriverManager.getConnection("jdbc:mysql:localhost:3306/test","root","");
 					Statement stmt=con.createStatement();
 					String sql="Select " from table where Pensionerid='"+textpensioner.getText()"';
-					ResultSet rs=stmt.executeQuery(sql);
+					
 					if(rs.next())
 					{
-						JOptionPane.showMessageDialog(null, "Login Succesfull");
+						String sqlfetch = "select idno, name, des, lastdept, address, phoneno, retdate from dummy";
+					ResultSet rs = stmt.executeQuery(sqlfetch);
+					String id = rs.getString("idno");
+					String name = rs.getString("name");
+					String designation = rs.getString("des");
+					String lastdept = rs.getString("lastdept");
+					String address = rs.getString("address");
+					String phoneno = rs.getString("phoneno");
+					String retdate = rs.getString("retdate");
 					}
 					else
 			       {
@@ -104,4 +112,4 @@ public class Frame1 {
 		separator_1.setBounds(24, 56, 399, 2);
 		frame.getContentPane().add(separator_1);
 	}
-}
+
