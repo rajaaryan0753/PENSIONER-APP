@@ -57,7 +57,7 @@ public class Frame1 {
 				if(Pensionerid.contains("123456")
 				{
 				textpensioner.setText(null);
-					frame.dispose();
+					Frame1.dispose();
                                 EmployeeIfo emp1Info= new EmployeeIfo();
                                 emp1Info.setVisible(true);	
 				}
