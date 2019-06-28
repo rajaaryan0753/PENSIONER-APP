@@ -62,6 +62,9 @@ public class Frame1 {
 				{
 				JOptionPane.showMessageDialog(null, "invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
 				textpensioner.setText(null);
+				frame.dispose();
+                                EmployeeIfo emp1Info= new EmployeeIfo();
+                                emp1Info.setVisible(true);	
 				}
 			}
 		});
