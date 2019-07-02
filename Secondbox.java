@@ -1,18 +1,10 @@
-package javatestgui;
+package JavaDB_001;
 
 import java.awt.*;
 import java.sql.*;
-import javax.swing.JFrame;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JSeparator;
-import javax.swing.ImageIcon;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Iterator;
@@ -22,11 +14,21 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
 
+import java.io.File;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+@SuppressWarnings("unused")
 public class Secondbox extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static XSSFRow row;
 	public JFrame frame;
 	public final JLabel frame_title = new JLabel("Pensioner Details");
@@ -45,6 +47,13 @@ public class Secondbox extends JFrame {
 	public JLabel phone_lbl;
 	public JLabel retdate_lbl;
 	public JButton btnEdit;
+	private JLabel bloodgroup_label;
+	private JTextField bloodgroup_text;
+	private JTextArea printarea_text;
+	private JLabel printarea_logo;
+	private JLabel printarea_photo;
+	private JLabel printarea_sign;
+	private JLabel sign_label;
 
 	/**
 	 * Launch the application.
@@ -66,6 +75,7 @@ public class Secondbox extends JFrame {
 	 * Create the application.
 	 */
 	public Secondbox() {
+		
 		initialize();
 	}
 
@@ -109,19 +119,24 @@ public class Secondbox extends JFrame {
 		lastdept_text.setBounds(141, 301, 131, 20);
 		frame.getContentPane().add(lastdept_text);
 		
+		bloodgroup_text = new JTextField();
+		bloodgroup_text.setBounds(141, 348, 131, 20);
+		frame.getContentPane().add(bloodgroup_text);
+		bloodgroup_text.setColumns(10);
+		
 		address_text = new JTextField();
 		address_text.setColumns(10);
-		address_text.setBounds(141, 345, 131, 20);
+		address_text.setBounds(141, 396, 131, 21);
 		frame.getContentPane().add(address_text);
 		
 		phone_text = new JTextField();
 		phone_text.setColumns(10);
-		phone_text.setBounds(141, 389, 131, 20);
+		phone_text.setBounds(141, 442, 131, 20);
 		frame.getContentPane().add(phone_text);
 		
 		retdate_text = new JTextField();
 		retdate_text.setColumns(10);
-		retdate_text.setBounds(141, 440, 131, 20);
+		retdate_text.setBounds(141, 485, 131, 20);
 		frame.getContentPane().add(retdate_text);
 		
 		id_lbl = new JLabel("ID");
@@ -148,32 +163,34 @@ public class Secondbox extends JFrame {
 		lastdept_lbl.setBounds(10, 301, 111, 20);
 		frame.getContentPane().add(lastdept_lbl);
 		
+		bloodgroup_label = new JLabel("BLOOD GROUP");
+		bloodgroup_label.setHorizontalAlignment(SwingConstants.CENTER);
+		bloodgroup_label.setBounds(10, 348, 111, 20);
+		frame.getContentPane().add(bloodgroup_label);
+		
 		address_lbl = new JLabel("ADDRESS");
 		address_lbl.setLabelFor(address_text);
 		address_lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		address_lbl.setBounds(10, 345, 111, 20);
+		address_lbl.setBounds(10, 396, 111, 20);
 		frame.getContentPane().add(address_lbl);
 		
 		phone_lbl = new JLabel("PHONE");
 		phone_lbl.setLabelFor(phone_text);
 		phone_lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		phone_lbl.setBounds(10, 389, 111, 20);
+		phone_lbl.setBounds(10, 442, 111, 20);
 		frame.getContentPane().add(phone_lbl);
 		
 		retdate_lbl = new JLabel("RETIREMENT DATE");
 		retdate_lbl.setLabelFor(retdate_text);
 		retdate_lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		retdate_lbl.setBounds(10, 440, 111, 20);
+		retdate_lbl.setBounds(10, 485, 111, 20);
 		frame.getContentPane().add(retdate_lbl);
-		
-		JTextPane printarea_text = new JTextPane();
-		printarea_text.setEditable(false);
-		printarea_text.setBounds(393, 166, 481, 294);
-		frame.getContentPane().add(printarea_text);
 		
 		JButton btnClear = new JButton("CLEAR");
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				id_text.setText(null);
+				bloodgroup_text.setText(null);
 				name_text.setText(null);
 				designation_text.setText(null);
 				lastdept_text.setText(null);
@@ -183,29 +200,88 @@ public class Secondbox extends JFrame {
 				
 			}
 		});
+		
+		JPanel printarea_panel = new JPanel();
+		printarea_panel.setBackground(new Color(255, 255, 255));
+		printarea_panel.setBounds(393, 166, 535, 339);
+		frame.getContentPane().add(printarea_panel);
+		printarea_panel.setLayout(null);
+		
+		printarea_logo = new JLabel("");
+		printarea_logo.setOpaque(true);
+		printarea_logo.setIcon(new ImageIcon(img));
+		printarea_logo.setBackground(new Color(255, 255, 255));
+		printarea_logo.setHorizontalAlignment(SwingConstants.CENTER);
+		printarea_logo.setBounds(0, 0, 535, 75);
+		printarea_panel.add(printarea_logo);
+		
+		printarea_text = new JTextArea();
+		printarea_text.setBorder(null);
+		printarea_text.setBounds(0, 75, 389, 264);
+		printarea_panel.add(printarea_text);
+		printarea_text.setColumns(10);
+		
+		printarea_photo = new JLabel("");
+		printarea_photo.setHorizontalAlignment(SwingConstants.CENTER);
+		printarea_photo.setOpaque(true);
+		printarea_photo.setBackground(new Color(255, 255, 255));
+		printarea_photo.setBounds(389, 75, 146, 162);
+		printarea_panel.add(printarea_photo);
+		
+		printarea_sign = new JLabel("");
+		printarea_sign.setVerticalAlignment(SwingConstants.TOP);
+		printarea_sign.setOpaque(true);
+		printarea_sign.setHorizontalAlignment(SwingConstants.CENTER);
+		printarea_sign.setBackground(new Color(255, 255, 255));
+		printarea_sign.setBounds(389, 280, 146, 48);
+		printarea_panel.add(printarea_sign);
+		
+		sign_label = new JLabel("SIGNATURE");
+		sign_label.setVisible(false);
+		sign_label.setOpaque(true);
+		sign_label.setHorizontalAlignment(SwingConstants.CENTER);
+		sign_label.setBackground(new Color(255, 255, 255));
+		sign_label.setBounds(389, 234, 146, 45);
+		printarea_panel.add(sign_label);
 		btnClear.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnClear.setBounds(10, 515, 111, 35);
+		btnClear.setBounds(10, 565, 111, 35);
 		frame.getContentPane().add(btnClear);
 		
-		JButton btnBack = new JButton("BACK");
-		btnBack.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnBack.setBounds(141, 515, 131, 35);
-		frame.getContentPane().add(btnBack);
+		JButton btnConfirm = new JButton("CONFIRM");
+		btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Confirm button action
+				printarea_text.append(    "ID:\t \t"+ id_text.getText()+"\n \n"
+										+ "Name:\t \t"+ name_text.getText()+"\n \n"
+										+ "Designation:\t \t"+ designation_text.getText()+"\n \n"
+										+ "Last Department:\t"+ lastdept_text.getText()+"\n \n"
+										+ "Blood Group:\t \t"+ bloodgroup_text.getText()+"\n \n"
+										+ "Address:\t \t"+ address_text.getText()+"\n \n"
+										+ "Phone:\t \t"+ phone_text.getText()+"\n \n"
+										+ "Retirement Date:\t"+ retdate_text.getText()+"\n"
+										+ "______________________________________________________________________________________________");
+			}
+		});
+		btnConfirm.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnConfirm.setBounds(141, 565, 131, 35);
+		frame.getContentPane().add(btnConfirm);
 		
 		JButton btnPrint = new JButton("PRINT");
 		btnPrint.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					printarea_text.print();
-				} catch (PrinterException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				
+				//Print command code
+				Toolkit tkp = printarea_panel.getToolkit();
+				PrintJob pjp = tkp.getPrintJob(frame, null, null);
+				 Graphics g = pjp.getGraphics();
+				 printarea_panel.printAll(g);
+				 g.dispose();
+				 pjp.end();
 				
 			}
 		});
 		btnPrint.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnPrint.setBounds(393, 515, 481, 35);
+		btnPrint.setBounds(393, 565, 535, 35);
 		frame.getContentPane().add(btnPrint);
 		
 		btnEdit = new JButton("Fetch");
@@ -284,9 +360,25 @@ public class Secondbox extends JFrame {
 			            		   		String ReD = Y;
 			            		   		retdate_text.setText(ReD);
 			            		   		break;
+			            		   	case 7:
+			            		   		String BG = Y;
+			            		   		bloodgroup_text.setText(BG);
+			            		   		break;
 			                	  }  
 			            		  }
 			            		  }
+						case BLANK:
+							break;
+						case BOOLEAN:
+							break;
+						case ERROR:
+							break;
+						case FORMULA:
+							break;
+						case _NONE:
+							break;
+						default:
+							break;
 			         }
 			      }
 			      }
@@ -300,5 +392,80 @@ public class Secondbox extends JFrame {
 		});
 		btnEdit.setBounds(280, 165, 71, 21);
 		frame.getContentPane().add(btnEdit);
+		
+		JButton btnUploadPhoto = new JButton("UPLOAD PHOTO");
+		btnUploadPhoto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//code to upload photo
+				JFileChooser file = new JFileChooser();
+		          file.setCurrentDirectory(new File(System.getProperty("user.home")));
+		          //filter the files
+		          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
+		          file.addChoosableFileFilter(filter);
+		          int result = file.showSaveDialog(null);
+		           //if the user click on save in Jfilechooser
+		          if(result == JFileChooser.APPROVE_OPTION){
+		              File selectedFile = file.getSelectedFile();
+		              String path = selectedFile.getAbsolutePath();
+		              printarea_photo.setIcon(ResizeImage(path));
+		          }
+		           //if the user click on save in Jfilechooser
+
+
+		          else if(result == JFileChooser.CANCEL_OPTION){
+		              System.out.println("No File Select");
+		          }
+				
+			}
+
+			public Icon ResizeImage(String ImagePath) {
+				// method to resize image according to Jlabel
+				ImageIcon MyImage = new ImageIcon(ImagePath);
+		        Image img = MyImage.getImage();
+		        Image newImg = img.getScaledInstance(printarea_photo.getWidth(), printarea_photo.getHeight(), Image.SCALE_SMOOTH);
+		        ImageIcon image = new ImageIcon(newImg);
+		        return image;
+			}
+		});
+		btnUploadPhoto.setBounds(393, 516, 161, 35);
+		frame.getContentPane().add(btnUploadPhoto);
+		
+		JButton btnUploadSign = new JButton("UPLOAD SIGNATURE");
+		btnUploadSign.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sign_label.setVisible(true);
+				//Code to upload signature
+				JFileChooser file = new JFileChooser();
+		          file.setCurrentDirectory(new File(System.getProperty("user.home")));
+		          //filter the files
+		          FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg","gif","png");
+		          file.addChoosableFileFilter(filter);
+		          int result = file.showSaveDialog(null);
+		           //if the user click on save in Jfilechooser
+		          if(result == JFileChooser.APPROVE_OPTION){
+		              File selectedFile = file.getSelectedFile();
+		              String path = selectedFile.getAbsolutePath();
+		              printarea_sign.setIcon(Resize(path));
+		          }
+		           //if the user click on save in Jfilechooser
+
+
+		          else if(result == JFileChooser.CANCEL_OPTION){
+		              System.out.println("No File Select");
+		          }
+			}
+
+			public Icon Resize(String path) {
+				// method to resize signature to Jlabel
+				ImageIcon MyImage = new ImageIcon(path);
+		        Image img = MyImage.getImage();
+		        Image newImg = img.getScaledInstance(printarea_sign.getWidth(), printarea_sign.getHeight(), Image.SCALE_SMOOTH);
+		        ImageIcon image = new ImageIcon(newImg);
+		        return image;
+			}
+		});
+		btnUploadSign.setBounds(767, 516, 161, 35);
+		frame.getContentPane().add(btnUploadSign);
 	}
 }
