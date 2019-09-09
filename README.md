@@ -12,3 +12,8 @@ For the testing purpose we have stored data in Excel sheet (as the original data
  <p>
  Basically It takes Id number of employee as one of the input or either you can manually enter the employee details and  in the next step it fetches the data stored in the excel file.Also Before printing the identity card it gives access to the  operator to edit the phone,Address and recent photograph of the employee 
 </p>
+<p><h6>Instructions:</h6></p>
+1. Download Application_Data.rar to get the necessary jar files and other folders(images, sample excel sheet etc.).<br>
+2. The code can be found in Application_Data: src-->JavaDB_001-->Secondbox.java or the application code (.java) file on git. <br>
+3. To get an executable file, use an external application, or a Java IDE(in which case you will get an .jar file).<br>
+
